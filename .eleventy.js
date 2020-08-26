@@ -5,6 +5,8 @@ const fs = require('fs');
 module.exports = (eleventyConfig) => {
     const md = new MarkdownIt().use(FrontMatter, () => {});
 
+    eleventyConfig.setTemplateFormats(["liquid", "md", "css"]);
+
     eleventyConfig.addShortcode("markdown", function (file) {
         const data = fs.readFileSync(file);
         return md.render(data.toString());
@@ -14,7 +16,7 @@ module.exports = (eleventyConfig) => {
         dir: {
             input: "src"
         }
-    }
+    };
 };
 
 

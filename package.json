@@ -1,0 +1,24 @@
+{
+  "name": "go-upskilling",
+  "version": "1.0.0",
+  "description": "Golang upskilling crash course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phrozen/go-upskilling.git"
+  },
+  "keywords": [],
+  "author": "Guillermo Estrada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phrozen/go-upskilling/issues"
+  },
+  "homepage": "https://github.com/phrozen/go-upskilling#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "markdown-it-front-matter": "^0.2.1"
+  }
+}

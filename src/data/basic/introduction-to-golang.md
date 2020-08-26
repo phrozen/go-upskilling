@@ -1,5 +1,6 @@
 ---
 title: "Introduction to Golang"
+tags: basic
 ---
 
 ## Introduction to Golang.

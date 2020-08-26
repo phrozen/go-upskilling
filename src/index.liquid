@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Go upskilling crash course</title>
+    </head>
+    <body>
+        <h1>Index</h1>
+        <ul>
+            {%- for lesson in collections.basic -%}
+                <li>
+                    <a href="#{{ lesson.fileSlug}}">{{ lesson.data.title }}</a>
+                </li>
+            {%- endfor -%}
+        </ul>
+        {%- for lesson in collections.basic -%}
+            <div id="{{ lesson.fileSlug }}">
+                {% markdown lesson.inputPath %}
+            </div>
+        {%- endfor -%}
+    </body>
+</html>

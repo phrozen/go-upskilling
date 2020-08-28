@@ -1,42 +1,51 @@
 ---
-title: "Anonymous functions and clousures"
-tags: advanced
+title: "Anonymous Functions and Clousures"
+tags: "advanced"
 ---
 ## Anonymous functions and clousures
-### Anonymous functions
+
+### Anonymous Functions
 An anonymous functions is a function that does not have a name, they are created dynamically, like the variables, they can be described as follow:
- ```go
-var dynamic func() = func(){
+
+ ``` go
+dynamic := func() {
 
 }
 ```
+
 This allow to have flexibility at the momment of writting code
+
  ```go
 import "fmt"
 
 
-func printHello(){
-  fmt.println("Hello")
-}
-func printBye(){
-  fmt.println("Bye")
-}
-func main(){
-myVar := func(){
-   println("stuff")
+func printHello() {
+    fmt.println("Hello")
 }
 
-myVar()
-myVar = printBye
-myVar()
-myVar = printHello
-myVar()
-myVar = func(){
-    fmt.println("something")
+func printBye() {
+    fmt.println("Bye")
 }
-myVar()
+
+func main() {
+    myVar := func() {
+        println("stuff")
+    }
+    myVar()
+
+    myVar = printBye
+    myVar()
+    // 
+    myVar = printHello
+    myVar()
+
+    myVar = func() {
+        fmt.println("something")
+    }
+    myVar()
 }
 ```
+
 In the example abode we have a variable that is pointing to a anonymous function that can be executed has a function, but the content of the function is changed with each assign, it even can be assign to non-anonymous functions
 
 ### Clousures

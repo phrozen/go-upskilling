@@ -1,6 +1,6 @@
 ---
   title: "Interfaces"
-  tags: intermeidate
+  tags: intermediate
 ---
 ## Interfaces
 Interfaces help specifying the behaviour of the objects. For an object to implement an interface it should follow one simple rule, it must suffice all methods declared in the interface.

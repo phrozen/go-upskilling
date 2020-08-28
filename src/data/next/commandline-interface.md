@@ -3,8 +3,9 @@
 ### Flag package
 This package has a lot utility methods that allows an easy integration with command line arguments. The following example will take two flags, one for a number and another for a string. The program will create a open the file with the name and will write numbers from 0 to the number.
 
- ```go
+ ``` go
 package main
+
 import (
     "flag"
     "fmt"
@@ -39,13 +40,14 @@ func main() {
 }
 ```
 The code is run like this:
-```bash
-bash$ go build hello.go
-bash$ ./hello -n 10 -f something
+``` bash
+$ go build hello.go
+$ ./hello -n 10 -f something
 ```
-And the file contains
-```plain
-bash$ cat something
+
+And the file contains:
+``` text
+$ cat something
 0 1 2 3 4 5 6 7 8 9 10
 ```
 ### Viper & Cobra

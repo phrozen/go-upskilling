@@ -1,6 +1,6 @@
 ---
 title: "Errors"
-tags: intermeidate
+tags: intermediate
 ---
 ## Errors
 The package errors contains the interface error and the method New  that return a error instance.

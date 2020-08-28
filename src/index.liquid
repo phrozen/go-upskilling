@@ -2,10 +2,18 @@
 <html>
     <head>
         <title>Go upskilling crash course</title>
-        <link rel="stylesheet" href="style.css">
+        
+        <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/monokai.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="print.css" type="text/css" media="print">
     </head>
     <body>
         <h1>Index</h1>
+        <h2>Basic</h2>
         <ul>
             {%- for lesson in collections.basic -%}
                 <li>
@@ -13,11 +21,45 @@
                 </li>
             {%- endfor -%}
         </ul>
+        <h2>Intermediate</h2>
+        <ul>
+            {%- for lesson in collections.intermediate -%}
+                <li>
+                    <a href="#{{ lesson.fileSlug}}">{{ lesson.data.title }}</a>
+                </li>
+            {%- endfor -%}
+        </ul>
+
+        <h2>Advanced</h2>
+        <ul>
+            {%- for lesson in collections.advanced -%}
+                <li>
+                    <a href="#{{ lesson.fileSlug}}">{{ lesson.data.title }}</a>
+                </li>
+            {%- endfor -%}
+        </ul>
+
+
         {%- for lesson in collections.basic -%}
             <section id="{{ lesson.fileSlug }}">
-                <h2>{{ lesson.data.title }}</h2>
                 {% markdown lesson.inputPath %}
             </section>
+            <hr>
         {%- endfor -%}
+
+        {%- for lesson in collections.intermediate -%}
+            <section id="{{ lesson.fileSlug }}">
+                {% markdown lesson.inputPath %}
+            </section>
+            <hr>
+        {%- endfor -%}
+
+        {%- for lesson in collections.advanced -%}
+            <section id="{{ lesson.fileSlug }}">
+                {% markdown lesson.inputPath %}
+            </section>
+            <hr>
+        {%- endfor -%}
+
     </body>
 </html>

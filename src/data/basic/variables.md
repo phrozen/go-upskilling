@@ -21,12 +21,14 @@ For numeric types:
   - complex64, complex128
 
 A variable can be declared in the following ways:
-```go
+
+``` go
 var name string
 var name1, name2 string = "value", "value2"
 ```
 A short way to declare a variable is using the **:=** operator, that is used to declare a variable with an implicit type based on the right side of the operation.
-```go
+
+``` go
 name := "1"
 name1, name2, name3 := "value", "value2", "value3"
 i := 1
@@ -37,9 +39,12 @@ i,j,k := 0, 1, 2
 ### Strings and Runes
 
 Strings by default are ***UTF8***, with this using a char is not possible, since the size of a char is 1 byte, and a UTF8 symbol can use up to 4 bytes (32 bits), to solve this problem runes are used to avoid having problems with unicode sets.  
-Example  
-```go
+
+Example 
+
+``` go
 package main
+
 import (
     "fmt"
 )
@@ -47,6 +52,7 @@ import (
 func printByChar(s string) {
     chars := []byte(s)
     fmt.Printf("This slice has a len of %d\n", len(chars))
+
     for i, c := range chars {
         fmt.Printf("Char %d value is %d\n", i, c)
     }
@@ -56,7 +62,7 @@ func printByRune(s string) {
     runes := []rune(s)
     fmt.Printf("This slice has a len of %d\n", len(runes))
     for i, r := range runes {
-        fmt.Printf("Rune %d value is %c\n", i, r)
+    fmt.Printf("Rune %d value is %c\n", i, r)
     }
 }
 
@@ -73,8 +79,9 @@ func main() {
 
 }
 ```
+
 Output:
-```plain
+``` text
 String 1 has a len of 20
 String 2 has a len of 14
 This slice has a len of 20

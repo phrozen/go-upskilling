@@ -1,6 +1,6 @@
 ---
   title: "Structs and type"
-  tags: intermeidate
+  tags: intermediate
 ---
 ## Type
 

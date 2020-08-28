@@ -1,6 +1,6 @@
 ---
 title: "Methods"
-tags: intermeidate
+tags: intermediate
 ---
 ## Methods
 

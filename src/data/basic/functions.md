@@ -2,7 +2,9 @@
 title: "Functions"
 tags: basic
 ---
-## Funtions
+
+## Functions
+
 Functions in Go  start with the keyword “func” followed by the name of function, input values and return values
 
 Example
@@ -19,6 +21,7 @@ Returning values is done with the keyword “return”, it can return multiple v
 
 ## Defer
 Defer are instructions that are always executed at the end of the function, they can be stacked. When something is deferred it is not executed in that moment, it enters a stack and is keep it there until the function ends or a early return is find, then there are executed in last-in first-out order.
+
 ```go
 package main
 
@@ -34,8 +37,9 @@ func main() {
     fmt.Println("done")
 }
 ```
+
 The example above will print the following:
-```plain
+```
 counting
 done
 9

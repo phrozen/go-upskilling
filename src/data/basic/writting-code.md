@@ -3,16 +3,18 @@ title: Writting code
 tags: basic
 ---
 
+## Writing Code
+
 First let's check that the installation is working, for this we will create a new folder inside the src directory in the $GOPATH
 
-```bash
+``` bash
 cd $GOPATH
 mkdir example
 ```
 
 inside the directory we will create the file hello.go with this content:
 
-```go
+``` go
 package main func main()
 {
   fmt.Printf("hello, world\n")
@@ -21,7 +23,7 @@ package main func main()
 
 Run it like a script!
 
-```bash
+``` bash
 $ go run hello.go
 ```
 
@@ -39,7 +41,7 @@ And run it
 $ ./hello
 ```
 
-## Packages
+### Packages
 
 A package is a library in Go, If a package name is **main** go will search for the code for the main function and compile the project as an executable; otherwise the package is compile as a library
 
@@ -56,9 +58,9 @@ A project can contain multiple packages, each will be represented as a folder in
 
 ```go
 import (
-  "fmt"
-  "github.com/user/hello/example"
-  "github.com/google/go-cmp/cmp"
+    "fmt"
+    "github.com/user/hello/example"
+    "github.com/google/go-cmp/cmp"
 )
 ```
 
@@ -67,6 +69,7 @@ During the import of the package one can overwrite the name of the package.
 ```go
 import sql "mysql"
 ```
+
 In the example adobe we are importing the mysql package and renaming it "sql" if in a moment in time me want to change from mysql to sqlserver or another sql driver, we just need to change the imported packaged and all the code can remain the same.
 
 Another form of importing packages using the underscore symbol, this will import the package only for his side-efects (inititalition funcitons)

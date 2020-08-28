@@ -1,7 +1,10 @@
 ---
 title: "Introduction to Golang"
-tags: basic
+tags: "basic"
+index: 1
 ---
+
+## Introduction to Golang
 
 Go is strong typed language project created by Robert Griesemer, Rob Pike and Ken Thompson, the language has a lot of roots in C.
 

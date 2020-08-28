@@ -1,6 +1,6 @@
 ---
 title: "Other libraries"
-tag: "
+tag: "next"
 ---
 
 ## Other libraries

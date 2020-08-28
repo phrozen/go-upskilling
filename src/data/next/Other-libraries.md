@@ -1,7 +1,8 @@
 ---
 title: "Other libraries"
-tag: next
+tag: "
 ---
+
 ## Other libraries
 Here is a list of possible libraries and projects that can be used Go
 

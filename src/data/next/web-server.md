@@ -1,10 +1,14 @@
 ---
 title: "Web server"
 tag: next
+index: 3
 ---
+
 ## Web server
-The package net/http allows to handle http requests, it allows to easy create and edit endpoint for a web server, but some the of the methods that offer are a basic and will require to write more code than using a web server framework,
- ```go
+
+The package net/http allows to handle http requests, it allows to easy create and edit endpoint for a web server, but some the of the methods that offer are a basic and will require to write more code than using a web server framework.
+
+ ``` go
 package main
 import (
     "fmt"

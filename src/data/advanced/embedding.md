@@ -1,6 +1,7 @@
 ---
 title: "Embedding"
 tag: advanced
+index: 3
 ---
 ## Embedding structs
 The official documentation describe a type struct as:
@@ -11,48 +12,49 @@ So, in other words embedding is another way of declaring fields into a new struc
 
 Example:
 
-```go
+``` go
 type person struct{
-      name string
-      lastName string
-      age int
+    name string
+    lastName string
+    age int
 }
 
 type employee struct{
-      person
-      salary float32
-      company string
+    person
+    salary float32
+    company string
 }
 
 type hello interface{
-      sayHello()
+    sayHello()
 }
 
 type invoiceInfo interface{
-      getName() string
-      getCompany() string
+    getName() string
+    getCompany() string
 }
 
 type formalHello interface{
-      sayFormalHello()
+    sayFormalHello()
 }
 
 func (p *person) sayhello(){
-            fmt.Println("Hello my name is ", p.name)
+    fmt.Println("Hello my name is ", p.name)
 }
 
 func (e *eemployee) sayFormalHello(){
-      fmt.Println("Good Morning everyone, my name is ",e.name)
+    fmt.Println("Good Morning everyone, my name is ",e.name)
 }
 
 func (p *person) getName() string{
-      return p.name
+    return p.name
 }
 
 func (e * employee) getCompany() string{
-      return e.company
+    return e.company
 }
 ```
+
 In this example we have 2 structs person and employee, and we can see that the employee struct have an embedded type of persona, this mean that all the instances of employee can access to the fields name, lastname and age.
 
 Also both structs implement the interface  hello, since person has the method implemented of sayHello() and employee can access this method both suffice this interface. But employee also satisfice the interface formalHello and invoice

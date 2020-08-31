@@ -1,23 +1,28 @@
 ---
 title: "Concurrency"
 tag: advanced
+index: 4
 ---
 ## Concurrency
 ### Go routines
 Go Routines are lightweight threads that run in the same address space since this mean that the access to memory have to be synchronized.
 
 To run a new routine it just need to use the keyword go
-```go
+
+``` go
 go function()
  ```
 
 ### Channels
 Using channels is the easy way to communicate between routines since they allow routines to syncronize without explicit locks or conditions by blocking the channel until the sender or receiver is ready.
 The channels type is chan and they have to be initialized before can be used.
+
 ```go
 c := make(chan int)
 ```
-They also have a reserved operator for channels <-
+
+They also have a reserved operator for channels `<-`
+
 ```go
 import "fmt"
 
@@ -35,70 +40,83 @@ func main(){
     fmt.Println(<-c)
 }
 ```
+
 Information is transmitted in or out the channel depending on the position of the channel and the arrow operator
 
 ### Buffers
 Channels can have a buffered size that block the channel for send when is full or for receiving when is empty.
-```go
+
+``` go
 c := make(chan int, 5)
 ```
+
 Writing to a buffered channel will block if it is full.
 
 ### Range and close
 A sender can send a signal to indicate that the channel will not be receiving any more updates. This can be done by the function close(c).
-```go
+
+``` go
 package main
 
 import (
- "fmt"
- "math/rand"
- "runtime"
- "sync"
- "time"
+    "fmt"
+    "math/rand"
+    "runtime"
+    "sync"
+    "time"
 )
 
 func init() {
- fmt.Printf("Using %d workers...\n", runtime.NumCPU())
- rand.Seed(time.Now().UnixNano())
+    fmt.Printf("Using %d workers...\n", runtime.NumCPU())
+    rand.Seed(time.Now().UnixNano())
 }
 
+//This funciton will "process" the data by random wauting from 1 to 5 secodns
 func process(name int, data chan int, wg *sync.WaitGroup) {
- for i := range data {
- elapsed := (time.Duration(rand.Intn(5)) + 1) * time.Second
- time.Sleep(elapsed)
- fmt.Printf("Worker %d) Processed data: %d in %d[ms]\n", name, i, elapsed/1000000)
- }
- wg.Done()
+    for i := range data {
+        elapsed := (time.Duration(rand.Intn(5)) + 1) * time.Second
+        time.Sleep(elapsed)
+        fmt.Printf("Worker %d) Processed data: %d in %d[ms]\n", name, i, elapsed/1000000)
+    }
+    wg.Done()
 }
 
 func main() {
- wg := &sync.WaitGroup{}
+    //This WaitGroup will help us to wait for all the threads
+    wg := &sync.WaitGroup{}
+    data := make(chan int)
 
- data := make(chan int)
-
- for i := 0; i < runtime.NumCPU(); i++ {
-   wg.Add(1)
-   go process(i+1, data, wg)
+    for i := 0; i < runtime.NumCPU(); i++ {
+        //We increase the number of go routine that we need to wait
+        wg.Add(1)
+        //We create a new rutine that will process data
+        go process(i+1, data, wg)
  }
 
- for i := 0; i < 64; i++ {
-  data <- i + 1
- }
- close(data)
- wg.wait()
+    for i := 0; i < 64; i++ {
+        data <- i + 1
+    }
+
+    close(data)
+    wg.wait()
 }
+
 ```
+
 In this example we create a wait group, this will help to keep track of the routines, this strcut has two methods, `add(int)` and `wait()` we add 1 for every routine called then we waited for the routines to finish.
 
 To check if a channel has been closet it can be done by adding a variable when assigning a value, similar to checking for a key existing in a map.
-```go
+
+``` go
  v, ok := <-c
 ```
+
 ok is false if there are no more values to receive and the channel is closed.
 
 ### Select
 The select keyword can be used to wait until a case can be executed
-```go
+
+``` go
 package main
 
 import (
@@ -144,6 +162,6 @@ func main() {
 ```
 
 ### Locks
-Go standard library offers a way to provided a easy way to avoid conflicts in routines. this can me done with sync.Mutex that to methods: **Lock()**, **Unlock()**, they allow only one routine to have access to the block of code. This can be used to create atomic operations and avoid race conditions.
+Go standard library offers a way to provided a easy way to avoid conflicts in routines. this can me done with sync.Mutex that to methods: `Lock()`, `Unlock()`, they allow only one routine to have access to the block of code. This can be used to create atomic operations and avoid race conditions.
 
-Since this locks **_block the resource for reading and writing_**, the use of a **RWMutex** is recommended, since they allow to block the channel for reading or writing or for both. This can also be found in sync.RWMutex and have the methods **Lock()**, **Unlock()** for writing and **RLock()** and **RUnlock()** for reading.
+Since this locks **_block the resource for reading and writing_**, the use of a **RWMutex** is recommended, since they allow to block the channel for reading or writing or for both. This can also be found in sync.RWMutex and have the methods `Lock()`, `Unlock()` for writing and `RLock()` and `RUnlock()` for reading.

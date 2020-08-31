@@ -1,16 +1,20 @@
 ---
 title: "Test and benchmarks"
 tags: advanced
+index: 2
 ---
-### Test and benchmarks
+### Test and Benchmarks
 
 ### Test
+
 The go tool provide his own automated testing for go source code, it is run by the command
-```bash
+
+``` bash
 go test
 ```
 And will search for the files ended with _test.go and for the test cases all routines that have the following format
-func TestXxxx(*testing.T)
+
+`func TestXxxx(*testing.T)`
 
 The methods ErrorF, Fatal, Error or any other related method can be used to signal a non success test, all of those methods are declared in the package testing
 
@@ -21,6 +25,7 @@ Benchmarks follow the following expression:
 func BenchmarkXxx(*testing.T)
 
 benchmarks are rune with the go tool:
-```bash
+
+``` bash
 go test -bench
 ```

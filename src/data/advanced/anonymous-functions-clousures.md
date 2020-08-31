@@ -1,6 +1,7 @@
 ---
 title: "Anonymous Functions and Clousures"
 tags: "advanced"
+index: 5
 ---
 ## Anonymous functions and clousures
 
@@ -15,7 +16,7 @@ dynamic := func() {
 
 This allow to have flexibility at the momment of writting code
 
- ```go
+ ``` go
 import "fmt"
 
 
@@ -28,17 +29,21 @@ func printBye() {
 }
 
 func main() {
+    //We set the value of myVar to an anonymous function
     myVar := func() {
         println("stuff")
     }
     myVar()
 
+    //We assing the funciton to the variable, changing the anonymous function
+    // for printBye
     myVar = printBye
     myVar()
-    // 
+
     myVar = printHello
     myVar()
 
+    //We can overwrite the non anonymous function for an anonymous one
     myVar = func() {
         fmt.println("something")
     }
@@ -50,17 +55,19 @@ In the example abode we have a variable that is pointing to a anonymous function
 
 ### Clousures
 Clousures are an application of the use anonymous functions that references a variable that is declared outside of the anonymous function, they have a firm like this
-```go
+``` go
 func name() func() int
 ```
 What this will return is a anonymous function that is declared inside the function that we called, closures have also to proporty that they keep referencing the variables that weren't passed as parameters.
 Example
- ```go
+ ``` go
+ //This function will return a new anonymous function each time is called
 func NewCounter() func() int{
-  n := 0
-  return func() int{
-    n += 1
-    return n
+    n := 0
+    //The return function will increase the counter and return the value,
+    return func() int{
+        n += 1
+        return n
     }
 }
 func main(){
@@ -70,7 +77,7 @@ func main(){
 }
 ```
 output
-```plain
+``` text
 1
 2
 ```

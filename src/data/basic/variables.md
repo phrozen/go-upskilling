@@ -1,16 +1,17 @@
 ---
 title: "Variables"
 tags: basic
+index: 4
 ---
 ## Variables
 
 Golang support the following built-in types:
 
 For strings:
-  - rune  
-  - string  
+  - rune
+  - string
 
-For Boolean values:  
+For Boolean values:
   - bool
 
 For numeric types:
@@ -38,9 +39,9 @@ i,j,k := 0, 1, 2
 
 ### Strings and Runes
 
-Strings by default are ***UTF8***, with this using a char is not possible, since the size of a char is 1 byte, and a UTF8 symbol can use up to 4 bytes (32 bits), to solve this problem runes are used to avoid having problems with unicode sets.  
+Strings by default are ***UTF8***, with this using a char is not possible, since the size of a char is 1 byte, and a UTF8 symbol can use up to 4 bytes (32 bits), to solve this problem runes are used to avoid having problems with unicode sets.
 
-Example 
+Example
 
 ``` go
 package main
@@ -126,13 +127,13 @@ Rune 1 value is e
 Rune 2 value is l
 Rune 3 value is l
 Rune 4 value is o
-Rune 5 value is  
+Rune 5 value is
 Rune 6 value is w
 Rune 7 value is o
 Rune 8 value is r
 Rune 9 value is l
 Rune 10 value is d
-Rune 11 value is  
+Rune 11 value is
 Rune 12 value is 👋
 Rune 13 value is 🌎
 This slice has a len of 14
@@ -141,7 +142,7 @@ Rune 1 value is e
 Rune 2 value is l
 Rune 3 value is l
 Rune 4 value is o
-Rune 5 value is  
+Rune 5 value is
 Rune 6 value is w
 Rune 7 value is o
 Rune 8 value is r
@@ -154,23 +155,26 @@ Rune 13 value is !
 In this example we can see that the two string has the same number of characters both have different length, since one has unicode characters, but when a rune is used to read it, both have the same size.
 
 ### Alias
+
 Alias are a way of renaming a type of variable, for example:
 A byte and rune are alias and int32 respective, this mean that they are not different types of data but they have an alternative spelling.
 
 This is something similar of int and char in C, you can do operation with them since they have the same size, but is not the same since Go will not let you operation between then because they have the size, but since they are the same type but with different name.
 
 ### Constants
+
 Constants works like another language and have to follow this rules
 They have to use they keyword cons  to be declared
 Can only be can be ***character, string, boolean, or numeric values***.
 Cannot be declared with the := shortcut
 
-```go
+``` go
 const name = "value"
 ```
 
 
 ### Zero values
+
 - **0** for numeric types
 - **false** for the boolean
 - **""** (empty string) for strings

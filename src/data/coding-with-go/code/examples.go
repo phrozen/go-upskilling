@@ -117,5 +117,4 @@ func main() {
 	for i := 0; i < 30; i++ {
 		a[i] = i + 1
 	}
-	fmt.Println(canSum(a, 3))
 }

@@ -1,6 +1,7 @@
 ---
 title: "Documentation"
 tags: advanced
+index: 1
 ---
 ## Documentation
 Go have is own documentation generation tool called godoc this tool, godoc is simple than Javadoc or DocString from python since the comment are not treated as language constructs or have is own machine syntax.

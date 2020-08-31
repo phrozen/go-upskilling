@@ -1,9 +1,11 @@
 ---
 title: "Control flow"
 tags: basic
+index: 6
 ---
 
 ### if/else
+
 `if/else` syntax is the same as java or c, but without the () and the {} are required.
 
 ``` go
@@ -16,11 +18,12 @@ if a == b {
 }
 ```
 
-Also it is possible to create a variable to have a initialization statement at the start of the `if`:
+Also it is possible to create a variable to have a initialization statement at the start of the
+`if`:
 
 ``` go
 if val, ok := myMap[324]; ok{
-    ...
+    //...
 }
 ```
 
@@ -30,12 +33,14 @@ In the example abode the if will check if the map contains the key.
 For cycle is almost the same as C/Java, but the () are gone and the {} is required, also the for in Go can be used as a while.
 
 #### Simple `for` loop
-```go
+``` go
 for i := 0; i < 10; i++ {
     // ...
 }
 ```
+
 It can be used like a while, with only the condition
+
 ``` go
 for i < 10 {
     i++
@@ -43,16 +48,18 @@ for i < 10 {
 ```
 
 Or it can be used to have an infinity loop
+
 ``` go
- for {  
+ for {
     // ...
 }
 ```
 
 ### Switch
-Switches are very similar to C/Java but instead of using the “break” keyword the code only execute one case and will not continue with the following cases unless the keyword “fallthrough” is used. Some other rules for the switch are that the cases can contain multiple values, () are removed from the syntax and {} are mandatory.  
+Switches are very similar to C/Java but instead of using the “break” keyword the code only execute one case and will not continue with the following cases unless the keyword “fallthrough” is used. Some other rules for the switch are that the cases can contain multiple values, () are removed from the syntax and {} are mandatory.
 
 Example
+
 ``` go
 switch integer {
     case 1:

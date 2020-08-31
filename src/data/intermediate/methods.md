@@ -1,6 +1,7 @@
 ---
 title: "Methods"
 tags: intermediate
+index: 5
 ---
 ## Methods
 
@@ -8,7 +9,7 @@ For an object in go to implement an interface it needs to suffice all the method
 
 Example:
 
-```go
+``` go
 //Using as reference the method declared in the Writer interface
 type console struct{
    ...

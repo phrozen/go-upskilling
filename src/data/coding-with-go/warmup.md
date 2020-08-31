@@ -1,6 +1,7 @@
 ---
 title: Warming up
 tag: coding
+index: 1
 ---
 
 ## Warming up
@@ -55,15 +56,16 @@ func preorderTransversalNoRecursion(root *tree) {
 ### Two numbers in array can sum a number
 This problem can be solved with a map so, lets use one
 
-```go
+``` go
 func canSum(a []int, t int) bool {
 	m := make(map[int]bool)
-	for _, i := range a {
-		if _, ok := m[t-i]; ok {
-			return true
-		}
-		m[i] = true
-	}
-	return false
+  // we can check all elements in the array usnig a range
+    for _, i := range a {
+        if _, ok := m[t-i]; ok {
+            return true
+        }
+        m[i] = true
+    }
+    return false
 }
 ```

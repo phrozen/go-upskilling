@@ -1,6 +1,7 @@
 ---
-title: Writting code
+title: Writing code
 tags: basic
+index: 3
 ---
 
 ## Writing Code
@@ -17,7 +18,7 @@ inside the directory we will create the file hello.go with this content:
 ``` go
 package main func main()
 {
-  fmt.Printf("hello, world\n")
+    fmt.Printf("hello, world\n")
 }
 ```
 
@@ -29,7 +30,7 @@ $ go run hello.go
 
 or compile it!
 
-```bash
+``` bash
 $ go build
 ```
 
@@ -37,7 +38,7 @@ $ go build
 
 And run it
 
-```bash
+``` bash
 $ ./hello
 ```
 

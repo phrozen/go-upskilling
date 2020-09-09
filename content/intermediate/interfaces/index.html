@@ -1,0 +1,16 @@
+<h2>Interfaces</h2>
+<p>Interfaces help specifying the behaviour of the objects. For an object to implement an interface it should follow one simple rule, it must suffice all methods declared in the interface.</p>
+<p>An object can implement multiple interfaces.</p>
+<p>Declaring is done with the keyword interface as follow:</p>
+<pre><code class="language-go">type Store interface{
+    Get(string) (string, error)
+    Set(string, string) error
+    Delete(string) error
+}
+
+type Writer interface {
+    Write(p []byte) (n int, err error)
+}
+
+</code></pre>
+<p>In this example, if a struct wants to implement the <strong>interface</strong> <strong>Writer</strong>, it should implement the method <strong>Write</strong></p>

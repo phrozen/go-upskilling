@@ -1,0 +1,69 @@
+<h2>Anonymous functions and clousures</h2>
+<h3>Anonymous Functions</h3>
+<p>An anonymous functions is a function that does not have a name, they are created dynamically, like the variables, they can be described as follow:</p>
+<pre><code class="language-go">dynamic := func() {
+
+}
+</code></pre>
+<p>This allow to have flexibility at the momment of writting code</p>
+<pre><code class="language-go">import &quot;fmt&quot;
+
+
+func printHello() {
+   fmt.println(&quot;Hello&quot;)
+}
+
+func printBye() {
+   fmt.println(&quot;Bye&quot;)
+}
+
+func main() {
+   //We set the value of myVar to an anonymous function
+   myVar := func() {
+       println(&quot;stuff&quot;)
+   }
+   myVar()
+
+   //We assing the funciton to the variable, changing the anonymous function
+   // for printBye
+   myVar = printBye
+   myVar()
+
+   myVar = printHello
+   myVar()
+
+   //We can overwrite the non anonymous function for an anonymous one
+   myVar = func() {
+       fmt.println(&quot;something&quot;)
+   }
+   myVar()
+}
+</code></pre>
+<p>In the example abode we have a variable that is pointing to a anonymous function that can be executed has a function, but the content of the function is changed with each assign, it even can be assign to non-anonymous functions</p>
+<h3>Clousures</h3>
+<p>Clousures are an application of the use anonymous functions that references a variable that is declared outside of the anonymous function, they have a firm like this</p>
+<pre><code class="language-go">func name() func() int
+</code></pre>
+<p>What this will return is a anonymous function that is declared inside the function that we called, closures have also to proporty that they keep referencing the variables that weren't passed as parameters.
+Example</p>
+<pre><code class="language-go">//This function will return a new anonymous function each time is called
+func NewCounter() func() int{
+   n := 0
+   //The return function will increase the counter and return the value,
+   return func() int{
+       n += 1
+       return n
+   }
+}
+func main(){
+   counter := NewCounter()
+   fmt.println(counter())
+   fmt.println(counter())
+}
+</code></pre>
+<p>output</p>
+<pre><code class="language-text">1
+2
+</code></pre>
+<p>The function abode will create an anonymous function that will keep referring to the variable n and will increate the count each time is called it will increment the counter inside the function. Each newCounter that is created it will have his own n variable. This allow to create data isolation.</p>
+<p>Closure function can also refer variable variables.</p>

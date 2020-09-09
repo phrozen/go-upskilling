@@ -1,0 +1,43 @@
+<h2>Writing Code</h2>
+<p>First let's check that the installation is working, for this we will create a new folder inside the src directory in the $GOPATH</p>
+<pre><code class="language-bash">cd $GOPATH
+mkdir example
+</code></pre>
+<p>inside the directory we will create the file hello.go with this content:</p>
+<pre><code class="language-go">package main func main()
+{
+    fmt.Printf(&quot;hello, world\n&quot;)
+}
+</code></pre>
+<p>Run it like a script!</p>
+<pre><code class="language-bash">$ go run hello.go
+</code></pre>
+<p>or compile it!</p>
+<pre><code class="language-bash">$ go build
+</code></pre>
+<p><strong><em>Note</em></strong>: go build utilises the working directory as a target for compilation, you can also pass the path as a param.</p>
+<p>And run it</p>
+<pre><code class="language-bash">$ ./hello
+</code></pre>
+<h3>Packages</h3>
+<p>A package is a library in Go, If a package name is <strong>main</strong> go will search for the code for the main function and compile the project as an executable; otherwise the package is compile as a library</p>
+<p>A project can contain multiple packages, each will be represented as a folder in the src directory, packages can contain more than a file, the scope of the package are all files in the folder.</p>
+<p><strong>Importing</strong> and <strong>exporting</strong> Go has 2 access settings for packages, <strong>exported</strong> and <strong>unexported</strong>. All names of methods, functions, variables, constants and interfaces that start with a capital letter are exported and all that not are unexported.</p>
+<p><strong>Unexported</strong>( something like private) access mean that it can be access from other files in the same package, but cannot be access outside the package scope.</p>
+<p><strong>Exported</strong>(Something like public) access mean that it can be access from other packages when the package is imported. All exported variables, interfaces, functions, methods and constants have to be commented.</p>
+<p><strong>Importing</strong> packages is done with $GOPATH + the directory of your local package or the external package</p>
+<pre><code class="language-go">import (
+    &quot;fmt&quot;
+    &quot;github.com/user/hello/example&quot;
+    &quot;github.com/google/go-cmp/cmp&quot;
+)
+</code></pre>
+<p>During the import of the package one can overwrite the name of the package.</p>
+<pre><code class="language-go">import sql &quot;mysql&quot;
+</code></pre>
+<p>In the example adobe we are importing the mysql package and renaming it &quot;sql&quot; if in a moment in time me want to change from mysql to sqlserver or another sql driver, we just need to change the imported packaged and all the code can remain the same.</p>
+<p>Another form of importing packages using the underscore symbol, this will import the package only for his side-efects (inititalition funcitons)</p>
+<p>More info</p>
+<p><a href="https://golang.org/doc/code.html">https://golang.org/doc/code.html</a></p>
+<p><a href="https://golang.org/doc/effective_go.html#package-names">https://golang.org/doc/effective_go.html#package-names</a></p>
+<p>More about go tool can be found with the go help command</p>

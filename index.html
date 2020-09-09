@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <title>Go upskilling crash course</title>
+        <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/monokai.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <script>
+            function toggle() {
+                var element = document.getElementById("menu");
+                element.classList.toggle("show");
+            }
+        </script>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="print.css" type="text/css" media="print">
+    </head>
+    <body>
+        <header>
+            <nav id="menu">
+    <button onclick="toggle()">
+        <svg width="100%" height="100%" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="close">
+            <path fill="none" stroke="#000" stroke-width="1.06" d="M16,16 L4,4"></path>
+            <path fill="none" stroke="#000" stroke-width="1.06" d="M16,4 L4,16"></path>
+        </svg>
+    </button>
+        <h6>basic</h6>
+        <ul><li>
+                <a href="#introduction-to-golang" onclick="toggle()">
+                    Introduction to Golang
+                </a>
+            </li><li>
+                <a href="#getting-started" onclick="toggle()">
+                    Getting Started
+                </a>
+            </li><li>
+                <a href="#writing-code" onclick="toggle()">
+                    Writing code
+                </a>
+            </li><li>
+                <a href="#variables" onclick="toggle()">
+                    Variables
+                </a>
+            </li><li>
+                <a href="#arrays-slices-and-maps" onclick="toggle()">
+                    Arrays, Slices and Maps
+                </a>
+            </li><li>
+                <a href="#control-flow" onclick="toggle()">
+                    Control Flow
+                </a>
+            </li><li>
+                <a href="#functions" onclick="toggle()">
+                    Functions
+                </a>
+            </li></ul>
+        <h6>intermediate</h6>
+        <ul><li>
+                <a href="#pointers" onclick="toggle()">
+                    Pointers
+                </a>
+            </li><li>
+                <a href="#errors" onclick="toggle()">
+                    Errors
+                </a>
+            </li><li>
+                <a href="#structs-and-type" onclick="toggle()">
+                    Structs and type
+                </a>
+            </li><li>
+                <a href="#interfaces" onclick="toggle()">
+                    Interfaces
+                </a>
+            </li><li>
+                <a href="#methods" onclick="toggle()">
+                    Methods
+                </a>
+            </li></ul>
+        <h6>advanced</h6>
+        <ul><li>
+                <a href="#documentation" onclick="toggle()">
+                    Documentation
+                </a>
+            </li><li>
+                <a href="#test-and-benchmarks" onclick="toggle()">
+                    Test and benchmarks
+                </a>
+            </li><li>
+                <a href="#anonymous-functions-and-clousures" onclick="toggle()">
+                    Anonymous Functions and Clousures
+                </a>
+            </li><li>
+                <a href="#modules" onclick="toggle()">
+                    Modules
+                </a>
+            </li><li>
+                <a href="#reflection" onclick="toggle()">
+                    Reflection
+                </a>
+            </li></ul>
+        <h6>next</h6>
+        <ul><li>
+                <a href="#data-handling" onclick="toggle()">
+                    Data handling
+                </a>
+            </li><li>
+                <a href="#command-line-interfaces" onclick="toggle()">
+                    Command Line Interfaces
+                </a>
+            </li><li>
+                <a href="#web-server" onclick="toggle()">
+                    Web Server
+                </a>
+            </li><li>
+                <a href="#middleware" onclick="toggle()">
+                    Middleware
+                </a>
+            </li><li>
+                <a href="#other-libraries" onclick="toggle()">
+                    Other Libraries
+                </a>
+            </li></ul></nav>
+            <section class="content">
+                <h1>Go Upskilling Course</h1>
+                <button onclick="toggle()">
+                    <svg width="100%" height="100%" viewBox="0 0 7 7" xmlns="http://www.w3.org/2000/svg" data-svg="menu">
+                        <rect y="1" width="8" height="1"></rect>
+                        <rect y="3" width="8" height="1"></rect>
+                        <rect y="5" width="8" height="1"></rect>
+                    </svg>
+                </button>
+            </section>
+        </header>
+        <main class="content"><hr id="introduction-to-golang">
+                    <section>
+                        
+<h2>Introduction to Golang</h2>
+<p>Go is strong typed language project created by Robert Griesemer, Rob Pike and Ken Thompson, the language has a lot of roots in C.</p>
+<p>Go is the Schrödinger cat of object orient programing language since it is and at the same time it is not an OOP. Since there is no type hierarchy, but relies in interface to satisfice polymorphism.</p>
+<p>More about the origins of go <a href="https://golang.org/doc/faq#Origins">here</a>.</p>
+
+                    </section><hr id="getting-started">
+                    <section>
+                        
+<h2>Getting Started</h2>
+<p>To download the go compiler just follow the following <a href="https://golang.org/doc/">instructions</a></p>
+<h3>Environment</h3>
+<p>The go compiler is expecting a structure for the imports, to do this it relays in the <code>$GOPATH</code> env variable, this variable will tell the go compiler were to found the modules to import.
+The <code>$GOPATH</code> will contain a directory with 3 folders: <code>src</code>, <code>pkg</code> and <code>bin</code>.</p>
+<h4>bin</h4>
+<p>The bin directory contains the binary files installed by the command
+<code>go install</code></p>
+<h4>pkg</h4>
+<p>The pkg directory contains the precompiled packages for future project compiles.</p>
+<h4>src</h4>
+<p>The src directory contains the source code of the projects. Since is usual to integrate github  in the projects, it is common that the structure of the src directory contains a github.com/user/project.</p>
+
+                    </section><hr id="writing-code">
+                    <section>
+                        
+<h2>Writing Code</h2>
+<p>First let's check that the installation is working, for this we will create a new folder inside the src directory in the $GOPATH</p>
+<pre><code class="language-bash">cd $GOPATH
+mkdir example
+</code></pre>
+<p>inside the directory we will create the file hello.go with this content:</p>
+<pre><code class="language-go">package main func main()
+{
+    fmt.Printf(&quot;hello, world\n&quot;)
+}
+</code></pre>
+<p>Run it like a script!</p>
+<pre><code class="language-bash">$ go run hello.go
+</code></pre>
+<p>or compile it!</p>
+<pre><code class="language-bash">$ go build
+</code></pre>
+<p><strong><em>Note</em></strong>: go build utilises the working directory as a target for compilation, you can also pass the path as a param.</p>
+<p>And run it</p>
+<pre><code class="language-bash">$ ./hello
+</code></pre>
+<h3>Packages</h3>
+<p>A package is a library in Go, If a package name is <strong>main</strong> go will search for the code for the main function and compile the project as an executable; otherwise the package is compile as a library</p>
+<p>A project can contain multiple packages, each will be represented as a folder in the src directory, packages can contain more than a file, the scope of the package are all files in the folder.</p>
+<p><strong>Importing</strong> and <strong>exporting</strong> Go has 2 access settings for packages, <strong>exported</strong> and <strong>unexported</strong>. All names of methods, functions, variables, constants and interfaces that start with a capital letter are exported and all that not are unexported.</p>
+<p><strong>Unexported</strong>( something like private) access mean that it can be access from other files in the same package, but cannot be access outside the package scope.</p>
+<p><strong>Exported</strong>(Something like public) access mean that it can be access from other packages when the package is imported. All exported variables, interfaces, functions, methods and constants have to be commented.</p>
+<p><strong>Importing</strong> packages is done with $GOPATH + the directory of your local package or the external package</p>
+<pre><code class="language-go">import (
+    &quot;fmt&quot;
+    &quot;github.com/user/hello/example&quot;
+    &quot;github.com/google/go-cmp/cmp&quot;
+)
+</code></pre>
+<p>During the import of the package one can overwrite the name of the package.</p>
+<pre><code class="language-go">import sql &quot;mysql&quot;
+</code></pre>
+<p>In the example adobe we are importing the mysql package and renaming it &quot;sql&quot; if in a moment in time me want to change from mysql to sqlserver or another sql driver, we just need to change the imported packaged and all the code can remain the same.</p>
+<p>Another form of importing packages using the underscore symbol, this will import the package only for his side-efects (inititalition funcitons)</p>
+<p>More info</p>
+<p><a href="https://golang.org/doc/code.html">https://golang.org/doc/code.html</a></p>
+<p><a href="https://golang.org/doc/effective_go.html#package-names">https://golang.org/doc/effective_go.html#package-names</a></p>
+<p>More about go tool can be found with the go help command</p>
+
+                    </section><hr id="variables">
+                    <section>
+                        
+<h2>Variables</h2>
+<p>Golang support the following built-in types:</p>
+<p>For strings:</p>
+<ul>
+<li>rune</li>
+<li>string</li>
+</ul>
+<p>For Boolean values:</p>
+<ul>
+<li>bool</li>
+</ul>
+<p>For numeric types:</p>
+<ul>
+<li>int8, uint8, int16, uint16, int32, uint32, int64, uint64, int, uint, uintptr</li>
+<li>byte (alias of uint8)</li>
+<li>rune (alias of int32)</li>
+<li>float32, float64.</li>
+<li>complex64, complex128</li>
+</ul>
+<p>A variable can be declared in the following ways:</p>
+<pre><code class="language-go">var name string
+var name1, name2 string = &quot;value&quot;, &quot;value2&quot;
+</code></pre>
+<p>A short way to declare a variable is using the <strong>:=</strong> operator, that is used to declare a variable with an implicit type based on the right side of the operation.</p>
+<pre><code class="language-go">name := &quot;1&quot;
+name1, name2, name3 := &quot;value&quot;, &quot;value2&quot;, &quot;value3&quot;
+i := 1
+i,j,k := 0, 1, 2
+
+</code></pre>
+<h3>Strings and Runes</h3>
+<p>Strings by default are <em><strong>UTF8</strong></em>, with this using a char is not possible, since the size of a char is 1 byte, and a UTF8 symbol can use up to 4 bytes (32 bits), to solve this problem runes are used to avoid having problems with unicode sets.</p>
+<p>Example</p>
+<pre><code class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func printByChar(s string) {
+    chars := []byte(s)
+    fmt.Printf(&quot;This slice has a len of %d\n&quot;, len(chars))
+
+    for i, c := range chars {
+        fmt.Printf(&quot;Char %d value is %d\n&quot;, i, c)
+    }
+}
+
+func printByRune(s string) {
+    runes := []rune(s)
+    fmt.Printf(&quot;This slice has a len of %d\n&quot;, len(runes))
+    for i, r := range runes {
+    fmt.Printf(&quot;Rune %d value is %c\n&quot;, i, r)
+    }
+}
+
+func main() {
+    hello := &quot;Hello world 👋🌎&quot;
+    hello2 := &quot;Hello workd!!!&quot;
+    fmt.Printf(&quot;String 1 has a len of %d\n&quot;, len(hello))
+    fmt.Printf(&quot;String 2 has a len of %d\n&quot;, len(hello2))
+
+    printByChar(hello)
+    printByChar(hello2)
+    printByRune(hello)
+    printByRune(hello2)
+
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">String 1 has a len of 20
+String 2 has a len of 14
+This slice has a len of 20
+Char 0 value is 72
+Char 1 value is 101
+Char 2 value is 108
+Char 3 value is 108
+Char 4 value is 111
+Char 5 value is 32
+Char 6 value is 119
+Char 7 value is 111
+Char 8 value is 114
+Char 9 value is 108
+Char 10 value is 100
+Char 11 value is 32
+Char 12 value is 240
+Char 13 value is 159
+Char 14 value is 145
+Char 15 value is 139
+Char 16 value is 240
+Char 17 value is 159
+Char 18 value is 140
+Char 19 value is 142
+This slice has a len of 14
+Char 0 value is 72
+Char 1 value is 101
+Char 2 value is 108
+Char 3 value is 108
+Char 4 value is 111
+Char 5 value is 32
+Char 6 value is 119
+Char 7 value is 111
+Char 8 value is 114
+Char 9 value is 107
+Char 10 value is 100
+Char 11 value is 33
+Char 12 value is 33
+Char 13 value is 33
+This slice has a len of 14
+Rune 0 value is H
+Rune 1 value is e
+Rune 2 value is l
+Rune 3 value is l
+Rune 4 value is o
+Rune 5 value is
+Rune 6 value is w
+Rune 7 value is o
+Rune 8 value is r
+Rune 9 value is l
+Rune 10 value is d
+Rune 11 value is
+Rune 12 value is 👋
+Rune 13 value is 🌎
+This slice has a len of 14
+Rune 0 value is H
+Rune 1 value is e
+Rune 2 value is l
+Rune 3 value is l
+Rune 4 value is o
+Rune 5 value is
+Rune 6 value is w
+Rune 7 value is o
+Rune 8 value is r
+Rune 9 value is k
+Rune 10 value is d
+Rune 11 value is !
+Rune 12 value is !
+Rune 13 value is !
+</code></pre>
+<p>In this example we can see that the two string has the same number of characters both have different length, since one has unicode characters, but when a rune is used to read it, both have the same size.</p>
+<h3>Alias</h3>
+<p>Alias are a way of renaming a type of variable, for example:
+A byte and rune are alias and int32 respective, this mean that they are not different types of data but they have an alternative spelling.</p>
+<p>This is something similar of int and char in C, you can do operation with them since they have the same size, but is not the same since Go will not let you operation between then because they have the size, but since they are the same type but with different name.</p>
+<h3>Constants</h3>
+<p>Constants works like another language and have to follow this rules
+They have to use they keyword cons  to be declared
+Can only be can be <em><strong>character, string, boolean, or numeric values</strong></em>.
+Cannot be declared with the := shortcut</p>
+<pre><code class="language-go">const name = &quot;value&quot;
+</code></pre>
+<h3>Zero values</h3>
+<ul>
+<li><strong>0</strong> for numeric types</li>
+<li><strong>false</strong> for the boolean</li>
+<li><strong>&quot;&quot;</strong> (empty string) for strings</li>
+<li><strong>nil</strong> for pointer types</li>
+</ul>
+
+                    </section><hr id="arrays-slices-and-maps">
+                    <section>
+                        
+<h2>Arrays, Slices and Maps</h2>
+<h3>Arrays</h3>
+<p>Arrays are of specific types and length, their length is <strong>fixed</strong> it cannot grow or reduced, arrays are values in Go, this meaning that the array variable is all the array, instead of the pointer at the first element of the array.</p>
+<p>Every array length type is the same, it will make [3]T a different type from [4]T.
+To declare an Array the following syntax is used:</p>
+<pre><code class="language-go">var name int[3]
+    arr := [3]int{1,2,3}
+    arr := [...]int{1,2,3,4,5,6}
+</code></pre>
+<p>Using <code>...</code> in the declaration of the array will instruct the compiler to count the variables at moment of compilation.</p>
+<h3>Slices</h3>
+<p>Slices in the hand are a more versatile type of data, a slice consist in the following:</p>
+<ul>
+<li>A pointer to an array</li>
+<li>Length of the segment (elements in the array)</li>
+<li>Capacity of elements stored.</li>
+</ul>
+<p>To create a slice the function syntax is used:</p>
+<pre><code class="language-go">make([]T, len, cap)
+</code></pre>
+<p>It will return an slice of <code>type T ( []T )</code>. The length and capacity of the slice can query with the funcitons <code>len(s)</code> and <code>cap(s)</code>.</p>
+<p>Slices can dynamical grow to adjust to the desired length of the slice. This is done internally by the append function, when the new array index is bigger than the capacity of the slice, it will create and copy elements to the new array.</p>
+<pre><code class="language-go">func main() {
+    s := make([]int,0,3)
+    for i := 0; i &lt; 7; i++ {
+        s = append(s, i)
+        fmt.Printf(&quot;cap %v, len %v, %p\n&quot;, cap(s), len(s), s)
+    }
+}
+</code></pre>
+<p>Output</p>
+<pre><code class="language-text">cap 3, len 1, 0xc0000b8000
+cap 3, len 2, 0xc0000b8000
+cap 3, len 3, 0xc0000b8000
+cap 6, len 4, 0xc0000ac030
+cap 6, len 5, 0xc0000ac030
+cap 6, len 6, 0xc0000ac030
+</code></pre>
+<p>We can see in the example above the function append will duplicate the capacity of the</p>
+<p>The slices have 3 built-in functions</p>
+<ul>
+<li><code>len()</code>: It will return the actual length of the array in the slice</li>
+<li><code>cap()</code>: It will return the max capacity with of the array in the slice</li>
+<li><code>append()</code>:  this will append the element to the array, if the array capacity will be smaller than the new size of the array, this function will create a new array with the double of the capacity and copy the array to it so it can be appended the new element</li>
+</ul>
+<h3>Map</h3>
+<p>Go implementation of the Map uses a hash table, it have to follow this rule: the keytype of the hashmap has to be comparable type.
+The map has the following built interfaces:</p>
+<ul>
+<li><code>len()</code>: return the number of elements in a map</li>
+<li><code>make(map[string]int)</code>: Function to create new maps, in this case it will create a new map with the keytype string and the value will be a integer</li>
+<li><code>delete(m,&quot;key&quot;)</code>: Function to delete a entry in a map.</li>
+</ul>
+<p>Maps can be checked if a key exists using a two initialization variables:</p>
+<pre><code class="language-go">myMap := make(map[int]string)
+...
+val, ok := myMap[324]
+</code></pre>
+<p>The variable val will be assigned the value of the content of the hashmap if it contain the key, and the variable ok will be assigned true or false depending if the map content the key</p>
+
+                    </section><hr id="control-flow">
+                    <section>
+                        
+<h2>Control Flow</h2>
+<h3>if/else</h3>
+<p><code>if/else</code> syntax is the same as java or c, but without the () and the {} are required.</p>
+<pre><code class="language-go">if a == b {
+    // ...
+} else if a == c{
+    // ...
+} else
+    // ...
+}
+</code></pre>
+<p>Also it is possible to create a variable to have a initialization statement at the start of the
+<code>if</code>:</p>
+<pre><code class="language-go">if val, ok := myMap[324]; ok{
+    //...
+}
+</code></pre>
+<p>In the example abode the if will check if the map contains the key.</p>
+<h3>for</h3>
+<p>For cycle is almost the same as C/Java, but the () are gone and the {} is required, also the for in Go can be used as a while.</p>
+<h4>Simple <code>for</code> loop</h4>
+<pre><code class="language-go">for i := 0; i &lt; 10; i++ {
+    // ...
+}
+</code></pre>
+<p>It can be used like a while, with only the condition</p>
+<pre><code class="language-go">for i &lt; 10 {
+    i++
+}
+</code></pre>
+<p>Or it can be used to have an infinity loop</p>
+<pre><code class="language-go"> for {
+    // ...
+}
+</code></pre>
+<h3>Switch</h3>
+<p>Switches are very similar to C/Java but instead of using the “break” keyword the code only execute one case and will not continue with the following cases unless the keyword “fallthrough” is used. Some other rules for the switch are that the cases can contain multiple values, () are removed from the syntax and {} are mandatory.</p>
+<p>Example</p>
+<pre><code class="language-go">switch integer {
+    case 1:
+        // code1
+    case 2, 3, 5, 7:
+        // code2
+        fallthrough
+    case 4:
+        // code3
+    default:
+        // code4
+}
+</code></pre>
+<p>In this example if condition1 is meet only code1 is run, but if condition2 or condition3 is meet the code2 and code3 is executed, but for condition4 just code3 is executed, if none condition is meet code4 is executed.</p>
+
+                    </section><hr id="functions">
+                    <section>
+                        
+<h2>Functions</h2>
+<p>Functions in Go  start with the keyword “func” followed by the name of function, input values and return values</p>
+<p>Example</p>
+<pre><code class="language-go">func example()
+func example(x int) int
+func example(a, _ int, z float32) bool
+func example(a, b int, z float32) (bool)
+func example(prefix string, values ...int)
+func example(a, b int, z float64, opt ...interface{}) (success bool)
+func example(int, int, float64) (float64, *[]int)
+</code></pre>
+<p>Returning values is done with the keyword “return”, it can return multiple values if the function expects multiple return values</p>
+<h3>Defer</h3>
+<p>Defer are instructions that are always executed at the end of the function, they can be stacked. When something is deferred it is not executed in that moment, it enters a stack and is keep it there until the function ends or a early return is find, then there are executed in last-in first-out order.</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;counting&quot;)
+
+    for i := 0; i &lt; 10; i++ {
+        defer fmt.Println(i)
+    }
+
+    fmt.Println(&quot;done&quot;)
+}
+</code></pre>
+<p>The example above will print the following:</p>
+<pre><code class="language-text">counting
+done
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+</code></pre>
+
+                    </section><hr id="pointers">
+                    <section>
+                        
+<h2>Pointers</h2>
+<p>A pointer is a special variable used to store a memory value, this mean that instead of the variable containing a value, it contains the value of the direction on memory of the variable.</p>
+<p>This allows having some of the most important functions, allowing the variables be passed as reference in the functions instead of been passed as values.</p>
+<p>The pointer has 2 reserves operators <code>*</code> and <code>&amp;</code>, <code>&amp;</code> can be used before the variable name and it will return the variable memory location. * can be used before the type of store value in the declaring and it will mean that is a pointer, and also is used to deference pointer values. When differencing a pointer, we will access to the value stored instead of the memory location of the value.</p>
+<p>Something that we always keep in mind is that in Go does not support pointer arithmetic like C/C++.</p>
+<pre><code class="language-go">package main
+import &quot;fmt&quot;
+
+func passAsValue(variable int){
+    fmt.Println(&quot;Memory dir inside value func &quot;, &amp;variable)
+    variable = 10
+    fmt.Println(&quot;Value inside value func &quot;, variable)
+}
+
+func passAsReference(variable *int){
+    fmt.Println(&quot;Memory dir insde reference func &quot;,variable)
+    *variable = 20
+    fmt.Println(&quot;Value inside reference func &quot;, *variable)
+}
+
+func main() {
+    variable := 1;
+    fmt.Println(&quot;Memory dir inside main func &quot; , &amp;variable)
+    passAsValue(variable)
+    fmt.Println(&quot;Value after pass as a value &quot; ,variable)
+    passAsReference(&amp;variable)
+    fmt.Println(&quot;Value after pass as a reference&quot;, variable)
+
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">Memory dir inside main func  0xc000018080
+Memory dir inside value func  0xc000018088
+Value inside value func  10
+Value after pass as a value  1
+Memory dir inside reference func  0xc000018080
+Value inside reference func  20
+Value after pass as a reference 20
+</code></pre>
+
+                    </section><hr id="errors">
+                    <section>
+                        
+<h2>Errors</h2>
+<p>The package errors contains the interface error and the method New  that return a error instance.</p>
+<pre><code class="language-go">type error interface {
+    Error() string
+}
+</code></pre>
+<p>By convention, errors are the last return value and have type error, if the function has no error is common to return a <strong>nil</strong> otherwise errors.New return a new error with the given message.</p>
+
+                    </section><hr id="structs-and-type">
+                    <section>
+                        
+<h2>Type</h2>
+<p>The type keyword is used to create a new type, it can be used to create structs, interfaces or new alias for a existing type</p>
+<pre><code class="language-go">type name struct{...}
+type name interface{...}
+type myNumber int32
+</code></pre>
+<h2>Structs</h2>
+<p>Structs are a collection of fields with declared types. Structs can be initializaded by a JSON like syntax.</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+type person struct{
+    name string
+    age int
+    address string
+}
+
+func main() {
+    p := person{
+        name :&quot;my name&quot;,
+        age : 28,
+        address : &quot;my address&quot;
+      }
+
+    fmt.Printf(&quot;name: %s\nage: %d\naddress %s\n&quot;,p.name,p.age,p.address)
+    p.name = &quot;change of name&quot;
+    p.address = &quot;change of address&quot;
+    fmt.Printf(&quot;name: %s\nage: %d\naddress %s\n&quot;,p.name,p.age,p.address)
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">name: my name
+age: 28
+address my address
+name: change of name
+age: 28
+address change of address
+</code></pre>
+
+                    </section><hr id="interfaces">
+                    <section>
+                        
+<h2>Interfaces</h2>
+<p>Interfaces help specifying the behaviour of the objects. For an object to implement an interface it should follow one simple rule, it must suffice all methods declared in the interface.</p>
+<p>An object can implement multiple interfaces.</p>
+<p>Declaring is done with the keyword interface as follow:</p>
+<pre><code class="language-go">type Store interface{
+    Get(string) (string, error)
+    Set(string, string) error
+    Delete(string) error
+}
+
+type Writer interface {
+    Write(p []byte) (n int, err error)
+}
+
+</code></pre>
+<p>In this example, if a struct wants to implement the <strong>interface</strong> <strong>Writer</strong>, it should implement the method <strong>Write</strong></p>
+
+                    </section><hr id="methods">
+                    <section>
+                        
+<h2>Methods</h2>
+<p>For an object in go to implement an interface it needs to suffice all the methods declared in the body of the interface, for an object to do this it just need to declare a function pointing to the object.</p>
+<p>Example:</p>
+<pre><code class="language-go">//Using as reference the method declared in the Writer interface
+type console struct{
+   ...
+}
+
+func (m *console) Write (n int, err error){
+    //body....
+    return 0, nil
+
+}
+//Now the struct console is implementing the interface Writer since it suffice the interface implementing all methods declared
+</code></pre>
+
+                    </section><hr id="documentation">
+                    <section>
+                        
+<h2>Documentation</h2>
+<p>Go have is own documentation generation tool called godoc this tool, godoc is simple than Javadoc or DocString from python since the comment are not treated as language constructs or have is own machine syntax.
+To document anything in go just write a comment at the declaration and with no intervening blank line before it.</p>
+<p>All exported types, interfaces, methods and structs has to be commented.</p>
+<p>More information and conventions <a href="https://blog.golang.org/godoc">here</a></p>
+
+                    </section><hr id="test-and-benchmarks">
+                    <section>
+                        
+<h3>Test and Benchmarks</h3>
+<h3>Test</h3>
+<p>The go tool provide his own automated testing for go source code, it is run by the command</p>
+<pre><code class="language-bash">go test
+</code></pre>
+<p>And will search for the files ended with _test.go and for the test cases all routines that have the following format</p>
+<p><code>func TestXxxx(*testing.T)</code></p>
+<p>The methods ErrorF, Fatal, Error or any other related method can be used to signal a non success test, all of those methods are declared in the package testing</p>
+<h3>Benchmarks</h3>
+<p>Benchmarks are a type of test that is run b.N times until it can be long enough to be properly  timed. The variable b.N is auto adjusted until it have the correct size.
+Benchmarks follow the following expression:
+func BenchmarkXxx(*testing.T)</p>
+<p>benchmarks are rune with the go tool:</p>
+<pre><code class="language-bash">go test -bench
+</code></pre>
+
+                    </section><hr id="anonymous-functions-and-clousures">
+                    <section>
+                        
+<h2>Anonymous functions and clousures</h2>
+<h3>Anonymous Functions</h3>
+<p>An anonymous functions is a function that does not have a name, they are created dynamically, like the variables, they can be described as follow:</p>
+<pre><code class="language-go">dynamic := func() {
+
+}
+</code></pre>
+<p>This allow to have flexibility at the momment of writting code</p>
+<pre><code class="language-go">import &quot;fmt&quot;
+
+
+func printHello() {
+   fmt.println(&quot;Hello&quot;)
+}
+
+func printBye() {
+   fmt.println(&quot;Bye&quot;)
+}
+
+func main() {
+   //We set the value of myVar to an anonymous function
+   myVar := func() {
+       println(&quot;stuff&quot;)
+   }
+   myVar()
+
+   //We assing the funciton to the variable, changing the anonymous function
+   // for printBye
+   myVar = printBye
+   myVar()
+
+   myVar = printHello
+   myVar()
+
+   //We can overwrite the non anonymous function for an anonymous one
+   myVar = func() {
+       fmt.println(&quot;something&quot;)
+   }
+   myVar()
+}
+</code></pre>
+<p>In the example abode we have a variable that is pointing to a anonymous function that can be executed has a function, but the content of the function is changed with each assign, it even can be assign to non-anonymous functions</p>
+<h3>Clousures</h3>
+<p>Clousures are an application of the use anonymous functions that references a variable that is declared outside of the anonymous function, they have a firm like this</p>
+<pre><code class="language-go">func name() func() int
+</code></pre>
+<p>What this will return is a anonymous function that is declared inside the function that we called, closures have also to proporty that they keep referencing the variables that weren't passed as parameters.
+Example</p>
+<pre><code class="language-go">//This function will return a new anonymous function each time is called
+func NewCounter() func() int{
+   n := 0
+   //The return function will increase the counter and return the value,
+   return func() int{
+       n += 1
+       return n
+   }
+}
+func main(){
+   counter := NewCounter()
+   fmt.println(counter())
+   fmt.println(counter())
+}
+</code></pre>
+<p>output</p>
+<pre><code class="language-text">1
+2
+</code></pre>
+<p>The function abode will create an anonymous function that will keep referring to the variable n and will increate the count each time is called it will increment the counter inside the function. Each newCounter that is created it will have his own n variable. This allow to create data isolation.</p>
+<p>Closure function can also refer variable variables.</p>
+
+                    </section><hr id="modules">
+                    <section>
+                        
+<h2>Modules</h2>
+<p>The use of modules is the new dependency management system added in version 1.11+, they work as a collection of packages that have a go.mod file in the root directory, this file contain all the path of packages, also contains all the external package requirements that need to be download, Go tool will check the local code and import all of this packages and add the latest version to the go.mod file if it have been not added.</p>
+<p>The way to initialise a module is with he following command:</p>
+<pre><code class="language-go">go mod init
+</code></pre>
+
+                    </section><hr id="reflection">
+                    <section>
+                        
+<h2>Reflection</h2>
+<p>The package reflect can be imported to work with reflections, it allow to know the type, the name and set values.
+Since go is strongly typed reflection in go have 3 rules:</p>
+<h4>Reflection goes from interface value to reflection object.</h4>
+<p>The reflection package can get information from a interface such as type, name and value of a variable. This can be done with methods on the package, for example</p>
+<pre><code class="language-go">func TypeOf(i interface{}) Type
+</code></pre>
+<p>This functions receive a empty interface, since this can hold any value, so when a argument is passed in the function first is stored in a empty interface.</p>
+<h4>Reflection goes from reflection object to interface value.</h4>
+<p>Reflection goes both ways and it can be transform an interface to a value, this can be done with the following method</p>
+<pre><code class="language-go">func (v Value) Interface() interface{}
+</code></pre>
+<h4>To modify a reflection object, the value must be settable.</h4>
+<p>Settability is the ability to modify the original values of the object, this is related to the addressability of the object and that if we have a copy of the value or the value himself.</p>
+<p>One can berify the settability of an object with the method <code>v.CanSet()</code></p>
+<p>NOTE: All methods in reflection package assumes that the programmer knows that is doing and many functions and methods will panics when used incorrect.</p>
+<p>More information: https://blog.golang.org/laws-of-reflection</p>
+
+                    </section><hr id="data-handling">
+                    <section>
+                        
+<h2>Data handling</h2>
+<h3>Files</h3>
+<p>The package os  include most of the operation for file management. The package offers the file struct that allow to have a pointer to a file or a directory, this struct allow to open an close files, change owner, read or write to the file.
+It is highly recommended to add a defer with the close statement to make sure that the file is always close at the end.
+os.File offers two open methods <code>File.Open(string)</code> and <code>File.OpenFile(string,int,FileMode)</code>,  File.Open(String) will open the file in read only mode.
+The File structs have implemented already a Read and a Write method, those methods are declared in the package io as part of the interfaces <code>io.Writer</code> and <code>io.Reader</code>.
+This interface allows also to read from console or other media.</p>
+<pre><code class="language-go">package main
+
+import (
+   &quot;fmt&quot;
+   &quot;os&quot;
+)
+
+func main() {
+   fd, err := os.Open(&quot;/Users/csantana/example&quot;)
+
+   if err != nil {
+       fmt.Println(err)
+       return
+   }
+
+   defer fd.Close()
+   names, err := fd.Readdirnames(5)
+
+   if err != nil {
+       fmt.Println(err)
+       return
+   }
+
+   fmt.Println(&quot;Contents of directory &quot; + fd.Name())
+
+   for _, name := range names {
+       childFd, err := os.Open(fd.Name() + &quot;/&quot; + name)
+       buffer := make([]byte, 128)
+
+       if err != nil {
+           fmt.Println(err)
+           return
+       }
+
+       defer childFd.Close()
+       childFd.Read(buffer)
+       fmt.Println(&quot;Text in file with name &quot; + name)
+       fmt.Println(string(buffer))
+   }
+
+}
+</code></pre>
+<p>This example will read up to 5 files in the directory and then will print the contents of the files</p>
+<h3>JSON</h3>
+<p>The package &quot;encoding/JSON&quot; has a lot of methods that allow an easy conversion from JSON-struct and struc-JSON, this can be done with the Marshal and UnMarshal methods.
+This important to mention that those methods respect the exported and non-exported variables, allowing to hide values when something is marshall to JSON</p>
+<pre><code class="language-go">package main
+
+import (
+   &quot;encoding/json&quot;
+   &quot;fmt&quot;
+)
+
+type personData struct {
+   Name       string
+   LastName   string
+   Age        int
+   Email      string
+   creditCard string
+}
+
+func createPerson(name string, lastName string, age int, email string, cc string) *personData {
+   return &amp;personData{name, lastName, age, email, cc}
+}
+
+func main() {
+   person := createPerson(&quot;Carlos&quot;, &quot;Santana&quot;, 27, &quot;csantana@luxoft.com&quot;, &quot;XXXX XXXX XXXX XXXX&quot;)
+   fmt.Println(person)
+   b, err := json.Marshal(person)
+   if err != nil {
+       return
+   }
+   fmt.Println(string(b))
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-plain">&amp;{Carlos Santana 27 csantana@luxoft.com XXXX XXXX XXXX XXXX}
+{&quot;Name&quot;:&quot;Carlos&quot;,&quot;LastName&quot;:&quot;Santana&quot;,&quot;Age&quot;:27,&quot;Email&quot;:&quot;csantana@luxoft.com&quot;}
+</code></pre>
+<p>In this example we can see that struct person data was converted to JSON, in the nex example I will do the inverse, will transform the json readed from a file to the struct.</p>
+<pre><code class="language-go">package main
+
+import (
+   &quot;encoding/json&quot;
+   &quot;fmt&quot;
+   &quot;os&quot;
+)
+
+type personData struct {
+   Name       string
+   LastName   string
+   Age        int
+   Email      string
+   creditCard string
+}
+
+func main() {
+   var person personData
+   fd, err := os.Open(&quot;jsonData&quot;)
+   if err != nil {
+       return
+   }
+   defer fd.Close()
+   b := make([]byte, 114)
+   fd.Read(b)
+   fmt.Println(&quot;data on b :&quot;)
+   fmt.Println(b)
+   fmt.Println(&quot;String readeable of b&quot;)
+   fmt.Println(string(b))
+   err = json.Unmarshal(b, &amp;person)
+   if err != nil {
+       fmt.Println(err)
+       return
+   }
+   fmt.Println(person)
+}
+</code></pre>
+<p>output:</p>
+<pre><code class="language-plain">data on b :
+[10 123 34 78 97 109 101 34 58 34 67 97 114 108 111 115 34 44 34 76 97 115 116 78 97 109 101 34 58 34 83 97 110 116 97 110 97 34 44 34 65 103 101 34 58 50 55 44 3
+4 69 109 97 105 108 34 58 34 99 115 97 110 116 97 110 97 64 108 117 120 111 102 116 46 99 111 109 34 44 34 99 114 101 100 105 116 67 97 114 100 34 58 34 88 88 88
+88 32 88 88 88 88 32 88 88 88 88 32 88 88 88 88 34 125 10]
+String readeable of b
+
+{&quot;Name&quot;:&quot;Carlos&quot;,&quot;LastName&quot;:&quot;Santana&quot;,&quot;Age&quot;:27,&quot;Email&quot;:&quot;csantana@luxoft.com&quot;,&quot;creditCard&quot;:&quot;XXXX XXXX XXXX XXXX&quot;}
+
+{Carlos Santana 27 csantana@luxoft.com }
+</code></pre>
+<p>Tags can be added to the code so the name of the variables is not the same show in the JSON, those tags can be added in the declaration of the structs</p>
+<pre><code class="language-go">type personData struct {
+    Name       string `json:&quot;name&quot;`
+    LastName   string `json:&quot;lastName&quot;`
+    Age        int    `json:&quot;years&quot;`
+    Email      string `json:&quot;email&quot;`
+    creditCard string
+}
+</code></pre>
+<p>https://blog.golang.org/json
+https://golang.org/pkg/os/
+https://golang.org/pkg/io/</p>
+
+                    </section><hr id="command-line-interfaces">
+                    <section>
+                        
+<h2>Command Line Interfaces</h2>
+<h3>Flag package</h3>
+<p>This package has a lot utility methods that allows an easy integration with command line arguments. The following example will take two flags, one for a number and another for a string. The program will create a open the file with the name and will write numbers from 0 to the number.</p>
+<pre><code class="language-go">package main
+
+import (
+   &quot;flag&quot;
+   &quot;fmt&quot;
+   &quot;os&quot;
+   &quot;strconv&quot;
+)
+
+var nFlag = flag.Int(&quot;n&quot;, 0, &quot;display message for n&quot;)
+var fFlag = flag.String(&quot;f&quot;, &quot;&quot;, &quot;display message for f&quot;)
+
+func main() {
+   flag.Parse()
+   if *nFlag == 0 {
+       fmt.Println(&quot;Value of n cannot be 0&quot;)
+       return
+   }
+
+   if *fFlag == &quot;&quot; {
+       fmt.Println(&quot;Value of f cannot be empty&quot;)
+       return
+   }
+
+   fd, err := os.OpenFile(*fFlag, os.O_RDWR|os.O_CREATE, 0755)
+   if err != nil {
+       fmt.Println(err)
+       return
+   }
+
+   defer fd.Close()
+   data := &quot;&quot;
+   for i := 0; i &lt;= *nFlag; i++ {
+       data += strconv.Itoa(i) + &quot; &quot;
+   }
+
+   fd.Write([]byte(data))
+}
+</code></pre>
+<p>The code is run like this:</p>
+<pre><code class="language-bash">$ go build hello.go
+$ ./hello -n 10 -f something
+</code></pre>
+<p>And the file contains:</p>
+<pre><code class="language-text">$ cat something
+0 1 2 3 4 5 6 7 8 9 10
+</code></pre>
+<h3>Viper &amp; Cobra</h3>
+<p>Cobra and Viper are third party repos that allow an easy configuration for applications.
+Viper allows reading configuration files from different formats and translates and allows to set values, on the other hand Cobra is a powerful tool that helps with CLI applicartions. Some examples that use those tools are Hugo, kubernates and github CLI.</p>
+<h3>Use case</h3>
+<p>Vegeta is one CLI tool that is used perform testing on http servers, is totally created in go.</p>
+<p>https://github.com/tsenart/vegeta
+https://golang.org/pkg/flag/
+https://github.com/spf13/viper
+https://github.com/spf13/cobra</p>
+
+                    </section><hr id="web-server">
+                    <section>
+                        
+<h2>Web server</h2>
+<p>The package net/http allows to handle http requests, it allows to easy create and edit endpoint for a web server, but some the of the methods that offer are a basic and will require to write more code than using a web server framework.</p>
+<pre><code class="language-go">package main
+import (
+   &quot;fmt&quot;
+   &quot;log&quot;
+   &quot;net/http&quot;
+   &quot;os&quot;
+)
+
+// This is a handler that takes Requests and writes Responses
+func index(res http.ResponseWriter, req *http.Request) {
+   // Log just a bit of the request to Stdout
+   log.Println(req.Method, req.URL, req.Proto)
+   // Write a message to the ResponseWriter
+   fmt.Fprintln(res, &quot;Welcome to the Go server example.&quot;)
+}
+func main() {
+   log.Println(&quot;Golang Server Example&quot;)
+   // Set environment variable PORT to any available port (ie. 3000)
+   if os.Getenv(&quot;PORT&quot;) == &quot;&quot; {
+       log.Fatalln(&quot;Set the $PORT environment variable to run the server (ie. export PORT=3000)&quot;)
+   }
+   // Serve the root &quot;/&quot; path with the 'index' handler
+   http.HandleFunc(&quot;/&quot;, index)
+   // Log some more...
+   log.Println(&quot;running server on port:&quot;, os.Getenv(&quot;PORT&quot;))
+   log.Fatal(http.ListenAndServe(&quot;:&quot;+os.Getenv(&quot;PORT&quot;), nil))
+}
+</code></pre>
+<p>Using this package will allow us to use all the HTTP methods, but it will need to a switch for each each the methods and one handle for each of the paths.</p>
+<p>There are some frameworks that help simplification this issue:</p>
+<ul>
+<li><strong>Caddy server</strong>
+https://caddyserver.com/v2</li>
+<li><strong>Gorilla Toolkit</strong>
+https://github.com/gorilla/</li>
+<li><strong>Echo</strong>
+https://echo.labstack.com/</li>
+<li><strong>Fiber</strong>
+https://github.com/gofiber/fiber</li>
+<li><strong>Chi</strong>
+https://github.com/go-chi/chi</li>
+</ul>
+
+                    </section><hr id="middleware">
+                    <section>
+                        
+<h2>Middleware</h2>
+<p>There are some third party libraries than use only the STD and can be used to create middleware, one of those is <strong>Negroni</strong>, and there some implementations of middleware.</p>
+
+                    </section><hr id="other-libraries">
+                    <section>
+                        
+<h2>Other libraries</h2>
+<p>Here is a list of possible libraries and projects that can be used Go</p>
+<p>https://github.com/avelino/awesome-go</p>
+<p>Those libraries include some of the following:
+Testing:</p>
+<ul>
+<li>Testify
+Microservices</li>
+<li>Go Micro</li>
+<li>Go kit
+Data structures</li>
+<li>go-datastructures
+Databases</li>
+<li>Bolt DB</li>
+<li>Badger DB</li>
+<li>Cockroach DB</li>
+</ul>
+
+                    </section></main>
+        <footer>
+            <p>Some footer notice</p>
+        </footer>
+    </body>
+</html>

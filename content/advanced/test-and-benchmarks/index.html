@@ -1,0 +1,15 @@
+<h3>Test and Benchmarks</h3>
+<h3>Test</h3>
+<p>The go tool provide his own automated testing for go source code, it is run by the command</p>
+<pre><code class="language-bash">go test
+</code></pre>
+<p>And will search for the files ended with _test.go and for the test cases all routines that have the following format</p>
+<p><code>func TestXxxx(*testing.T)</code></p>
+<p>The methods ErrorF, Fatal, Error or any other related method can be used to signal a non success test, all of those methods are declared in the package testing</p>
+<h3>Benchmarks</h3>
+<p>Benchmarks are a type of test that is run b.N times until it can be long enough to be properly  timed. The variable b.N is auto adjusted until it have the correct size.
+Benchmarks follow the following expression:
+func BenchmarkXxx(*testing.T)</p>
+<p>benchmarks are rune with the go tool:</p>
+<pre><code class="language-bash">go test -bench
+</code></pre>

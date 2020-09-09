@@ -1,0 +1,7 @@
+<h2>Errors</h2>
+<p>The package errors contains the interface error and the method New  that return a error instance.</p>
+<pre><code class="language-go">type error interface {
+    Error() string
+}
+</code></pre>
+<p>By convention, errors are the last return value and have type error, if the function has no error is common to return a <strong>nil</strong> otherwise errors.New return a new error with the given message.</p>

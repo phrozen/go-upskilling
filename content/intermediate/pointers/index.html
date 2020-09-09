@@ -1,0 +1,39 @@
+<h2>Pointers</h2>
+<p>A pointer is a special variable used to store a memory value, this mean that instead of the variable containing a value, it contains the value of the direction on memory of the variable.</p>
+<p>This allows having some of the most important functions, allowing the variables be passed as reference in the functions instead of been passed as values.</p>
+<p>The pointer has 2 reserves operators <code>*</code> and <code>&amp;</code>, <code>&amp;</code> can be used before the variable name and it will return the variable memory location. * can be used before the type of store value in the declaring and it will mean that is a pointer, and also is used to deference pointer values. When differencing a pointer, we will access to the value stored instead of the memory location of the value.</p>
+<p>Something that we always keep in mind is that in Go does not support pointer arithmetic like C/C++.</p>
+<pre><code class="language-go">package main
+import &quot;fmt&quot;
+
+func passAsValue(variable int){
+    fmt.Println(&quot;Memory dir inside value func &quot;, &amp;variable)
+    variable = 10
+    fmt.Println(&quot;Value inside value func &quot;, variable)
+}
+
+func passAsReference(variable *int){
+    fmt.Println(&quot;Memory dir insde reference func &quot;,variable)
+    *variable = 20
+    fmt.Println(&quot;Value inside reference func &quot;, *variable)
+}
+
+func main() {
+    variable := 1;
+    fmt.Println(&quot;Memory dir inside main func &quot; , &amp;variable)
+    passAsValue(variable)
+    fmt.Println(&quot;Value after pass as a value &quot; ,variable)
+    passAsReference(&amp;variable)
+    fmt.Println(&quot;Value after pass as a reference&quot;, variable)
+
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">Memory dir inside main func  0xc000018080
+Memory dir inside value func  0xc000018088
+Value inside value func  10
+Value after pass as a value  1
+Memory dir inside reference func  0xc000018080
+Value inside reference func  20
+Value after pass as a reference 20
+</code></pre>

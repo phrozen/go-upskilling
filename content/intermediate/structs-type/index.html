@@ -1,0 +1,39 @@
+<h2>Type</h2>
+<p>The type keyword is used to create a new type, it can be used to create structs, interfaces or new alias for a existing type</p>
+<pre><code class="language-go">type name struct{...}
+type name interface{...}
+type myNumber int32
+</code></pre>
+<h2>Structs</h2>
+<p>Structs are a collection of fields with declared types. Structs can be initializaded by a JSON like syntax.</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+type person struct{
+    name string
+    age int
+    address string
+}
+
+func main() {
+    p := person{
+        name :&quot;my name&quot;,
+        age : 28,
+        address : &quot;my address&quot;
+      }
+
+    fmt.Printf(&quot;name: %s\nage: %d\naddress %s\n&quot;,p.name,p.age,p.address)
+    p.name = &quot;change of name&quot;
+    p.address = &quot;change of address&quot;
+    fmt.Printf(&quot;name: %s\nage: %d\naddress %s\n&quot;,p.name,p.age,p.address)
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">name: my name
+age: 28
+address my address
+name: change of name
+age: 28
+address change of address
+</code></pre>

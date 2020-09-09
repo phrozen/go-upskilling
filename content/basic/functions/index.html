@@ -1,0 +1,42 @@
+<h2>Functions</h2>
+<p>Functions in Go  start with the keyword “func” followed by the name of function, input values and return values</p>
+<p>Example</p>
+<pre><code class="language-go">func example()
+func example(x int) int
+func example(a, _ int, z float32) bool
+func example(a, b int, z float32) (bool)
+func example(prefix string, values ...int)
+func example(a, b int, z float64, opt ...interface{}) (success bool)
+func example(int, int, float64) (float64, *[]int)
+</code></pre>
+<p>Returning values is done with the keyword “return”, it can return multiple values if the function expects multiple return values</p>
+<h3>Defer</h3>
+<p>Defer are instructions that are always executed at the end of the function, they can be stacked. When something is deferred it is not executed in that moment, it enters a stack and is keep it there until the function ends or a early return is find, then there are executed in last-in first-out order.</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;counting&quot;)
+
+    for i := 0; i &lt; 10; i++ {
+        defer fmt.Println(i)
+    }
+
+    fmt.Println(&quot;done&quot;)
+}
+</code></pre>
+<p>The example above will print the following:</p>
+<pre><code class="language-text">counting
+done
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+</code></pre>

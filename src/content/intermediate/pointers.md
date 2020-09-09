@@ -22,8 +22,6 @@ func passAsValue(variable int){
     fmt.Println("Value inside value func ", variable)
 }
 
-
-
 func passAsReference(variable *int){
     fmt.Println("Memory dir insde reference func ",variable)
     *variable = 20
@@ -43,7 +41,7 @@ func main() {
 
 Output:
 
-``` plain
+``` text
 Memory dir inside main func  0xc000018080
 Memory dir inside value func  0xc000018088
 Value inside value func  10

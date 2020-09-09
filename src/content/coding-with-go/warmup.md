@@ -5,21 +5,28 @@ index: 1
 ---
 
 ## Warming up
-Once that we have the basics concepts of the language we can start coding, to warm up we are going to solve some basic problems
+
+Once that we have the basics concepts of the language we can start coding, to warm up we are going to solve some basic problems.
 
 ### Tree preorder transversal
-The first thing that we need to do is create the structure for the tree
-```go
+
+The first thing that we need to do is create the structure for the tree.
+
+``` go
 type tree struct{
     value num
     left *tree
     right *tree
 }
 ```
-Once that we the struct for the tree, we can implement the algorithm for it, for the sake of this exercise we will do it first preorder recursive and then preorder without recursion
+
+Once that we the struct for the tree, we can implement the algorithm for it, for the sake of this exercise we will do it first preorder recursive and then preorder without recursion.
+
 #### Recursive
+
 Creating Recursive solution is pretty simple since the recursion in go is the same as in other languages:
-```go
+
+``` go
 func preorderTransversalRecursion(root *tree) {
     if root == nil {
         return
@@ -29,9 +36,12 @@ func preorderTransversalRecursion(root *tree) {
     preorderTransversalRecursion(root.right)
 }
 ```
+
 #### Non recursive
+
 To create a non recursive solution we need a queue or a list were to store the nodes to visit.
-```go
+
+``` go
 func preorderTransversalNoRecursion(root *tree) {
   //We create a new list to store the nodes to visit
 	l := list.New()
@@ -53,8 +63,10 @@ func preorderTransversalNoRecursion(root *tree) {
 	}
 }
 ```
+
 ### Two numbers in array can sum a number
-This problem can be solved with a map so, lets use one
+
+This problem can be solved with a map so, lets use one.
 
 ``` go
 func canSum(a []int, t int) bool {

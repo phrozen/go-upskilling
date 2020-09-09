@@ -1,7 +1,111 @@
-
+html, body {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    --color-blossom: #2c8898;
+    --color-fade: #982c61;
+    --color-alt-bg: #eee;
+    --height-header: 8rem;
+}
 
 body {
-    max-width: 960px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+header, footer {
+    background: var(--color-alt-bg);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 1px 10px 5px rgba(0, 0, 0, 0.25);
+}
+
+header nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    padding: 1rem 5rem;
+    background: var(--color-blossom);
+    box-shadow: 0 1px 10px 5px rgba(0, 0, 0, 0.25);
+    transform: translate(-110%, 0);
+    transition: all 0.8s;
+    -webkit-overflow-scrolling: touch;
+}
+
+.show {
+    transform: translate(0, 0);
+}
+
+header section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--height-header);
+}
+
+header section h1 {
+    margin: 0;
+    font-size: calc(var(--height-header)*0.5);
+}
+
+header section button {
+    background: none;
+    border: none;
+    padding: calc(var(--height-header)*0.75*0.25);
+    height: calc(var(--height-header)*0.75);
+    width: calc(var(--height-header)*0.75);
+}
+
+header section button:hover svg rect {
+    fill: #fff;
+}
+
+header nav h6 {
+    color: var(--color-fade);
+    text-transform: capitalize;
+    margin: 2rem 0;
+}
+
+header nav button {
+    position: absolute;
+    top: 2%;
+    right: 5%;
+    padding: calc(var(--height-header)*0.75*0.25);
+    height: calc(var(--height-header)*0.75);
+    width: calc(var(--height-header)*0.75);
+}
+
+header nav button svg path {
+    stroke: #fff;
+    stroke-width: 2;
+}
+
+header nav ul {
+    margin: 0;
+    color: var(--color-alt-bg);
+}
+
+header nav ul li {
+    margin: 0.5rem;
+}
+
+header nav a {
+    color: var(--color-alt-bg);
+}
+
+.content {
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 pre {
@@ -9,5 +113,21 @@ pre {
 }
 
 pre code {
-    font-size: 1.5em;
+    font-size: 1.25em;
+}
+
+hr {
+    margin: calc(var(--height-header)) 0;
+}
+
+@media (max-width: 684px) {
+    .content {
+        padding: 0 1rem;
+        max-width: calc(100% - 2rem);
+    }
+
+    body {
+        --height-header: 5rem;
+    }
+    
 }

@@ -1,22 +1,23 @@
 ---
-  title: "Structs and type"
-  tags: intermediate
-  index: 3
+title: "Structs and type"
+tags: intermediate
+index: 3
 ---
 ## Type
 
 The type keyword is used to create a new type, it can be used to create structs, interfaces or new alias for a existing type
 
- ``` go
+``` go
 type name struct{...}
 type name interface{...}
 type myNumber int32
- ```
+```
 
 ## Structs
 
 Structs are a collection of fields with declared types. Structs can be initializaded by a JSON like syntax.
- ``` go
+
+``` go
 package main
 
 import "fmt"
@@ -43,11 +44,11 @@ func main() {
 
 Output:
 
-``` plain
+``` text
 name: my name
 age: 28
 address my address
 name: change of name
 age: 28
 address change of address
- ```
+```

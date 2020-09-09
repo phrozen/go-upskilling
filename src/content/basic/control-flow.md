@@ -1,8 +1,10 @@
 ---
-title: "Control flow"
+title: "Control Flow"
 tags: basic
 index: 6
 ---
+
+## Control Flow
 
 ### if/else
 

@@ -12,6 +12,13 @@ module.exports = (eleventyConfig) => {
         return md.render(data.toString());
     });
 
+    function sortByIndex(values) {
+        let vals = [...values];
+        return vals.sort((a,b) => Math.sign(a.data.index - b.data.index));
+    }
+
+    eleventyConfig.addFilter("sortByIndex", sortByIndex);
+
     return {
         dir: {
             input: "src"

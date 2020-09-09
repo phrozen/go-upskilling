@@ -1,0 +1,21 @@
+<nav id="menu">
+    <button onclick="toggle()">
+        <svg width="100%" height="100%" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="close">
+            <path fill="none" stroke="#000" stroke-width="1.06" d="M16,16 L4,4"></path>
+            <path fill="none" stroke="#000" stroke-width="1.06" d="M16,4 L4,16"></path>
+        </svg>
+    </button>
+    {%- for name in sections -%}
+        {% assign collection = collections[name] | sortByIndex %}
+        <h6>{{ name | makeUppercase }}</h6>
+        <ul>
+        {%- for lesson in collection -%}
+            <li>
+                <a href="#{{ lesson.data.title |slug }}" onclick="toggle()">
+                    {{ lesson.data.title }}
+                </a>
+            </li>
+        {%- endfor -%}
+        </ul>
+    {%- endfor -%}
+</nav>

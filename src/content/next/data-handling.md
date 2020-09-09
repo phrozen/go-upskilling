@@ -1,6 +1,6 @@
 ---
 title: "Data handling"
-tag: next
+tags: next
 index: 1
 ---
 ## Data handling

@@ -1,7 +1,7 @@
 ---
-    title: "Arrays, Slices and Maps"
-    tags: basic
-    index: 5
+title: "Arrays, Slices and Maps"
+tags: basic
+index: 5
 ---
 ## Arrays, Slices and Maps
 ### Arrays

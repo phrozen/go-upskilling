@@ -1,6 +1,6 @@
 ---
-title: "Web server"
-tag: next
+title: "Web Server"
+tags: next
 index: 3
 ---
 

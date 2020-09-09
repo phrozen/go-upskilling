@@ -1,10 +1,11 @@
 ---
-title: "Other libraries"
-tag: "next"
+title: "Other Libraries"
+tags: "next"
 index: 5
 ---
 
 ## Other libraries
+
 Here is a list of possible libraries and projects that can be used Go
 
 https://github.com/avelino/awesome-go
